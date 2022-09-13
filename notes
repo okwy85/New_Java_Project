@@ -1,0 +1,21 @@
+java -version
+sudo amazon-linux-extras install java-openjdk11 - amazon linux
+sudo apt-get install openjdk-11-jdk - ubuntu (google)
+
+service jenkins status
+service jenkins start
+systemctl enable jenkins
+
+start jenkins on browser on port 8080
+port 8080 must be open at security group level
+
+login to jenkins
+manage jenkins == > plugin manger ==> available == > maven intergration
+
+install maven on your jenkins machine 
+mvn --version
+Maven home: /opt/maven
+Java home : /usr/lib/jvm/java-11-openjdk-11.0.13.0.8-1.amzn2.0.3.x86_64
+
+create a new project using the below command:
+mvn archetype:generate -DgroupId=com.sample.webproject -DartifactId=NewJavaProject -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
