@@ -1,0 +1,14 @@
+node {  
+    stage('Build') { 
+        echo "In build stage" 
+    }
+    stage('Test') { 
+        echo "In test stage" 
+    }
+    stage('Deploy') { 
+        echo "In deploy stage" 
+    }
+    stage('Archive') { 
+        echo "In archive stage" 
+    }
+}
