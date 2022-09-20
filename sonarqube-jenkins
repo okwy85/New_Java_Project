@@ -1,1 +1,21 @@
-
+node { 
+    def mvnHome = tool name: 'maven_home', type: 'maven'
+    stage('SCM-Checkout') { 
+        git branch: 'main', credentialsId: 'git-cred', 
+		url: 'https://github.com/vikas99341/New_Java_Project.git' 
+    }
+    stage('compile-step') { 
+        sh "${mvnHome}/bin/mvn compile"
+    }
+    stage('Sonar-analysis') { 
+		withSonarQubeEnv('sonarqube-server') {
+                sh "${mvnHome}/bin/mvn sonar:sonar"
+              }
+    }
+    stage('Package-step') { 
+        sh "${mvnHome}/bin/mvn package"
+    }
+    stage('Verify-stage') { 
+        sh "${mvnHome}/bin/mvn verify"
+    }
+}
