@@ -1,10 +1,11 @@
-node {  
+node { 
+    def mvnHome = tool name: 'Apache Maven 3.6.0', type: 'maven' 
     stage('SCM-Checkout') { 
          git branch: 'main', credentialsId: '05504b30-b936-4acf-9eeb-0a107bb606c5', 
 		 url: 'https://github.com/okwy85/New_Java_Project.git'
     }
     stage('Compile') { 
-        echo "In test stage" 
+        sh "${mvnHome}/bin/mvn compile"
     }
     stage('Deploy') { 
         echo "In deploy stage" 
