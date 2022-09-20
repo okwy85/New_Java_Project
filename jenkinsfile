@@ -1,8 +1,9 @@
 node {  
-    stage('Build') { 
-        echo "In build stage" 
+    stage('SCM-Checkout') { 
+         git branch: 'main', credentialsId: '05504b30-b936-4acf-9eeb-0a107bb606c5', 
+		 url: 'https://github.com/okwy85/New_Java_Project.git'
     }
-    stage('Test') { 
+    stage('Compile') { 
         echo "In test stage" 
     }
     stage('Deploy') { 
