@@ -1,0 +1,31 @@
+set up your ec2 instance and connect to it using ssh connection (for our example AmZ LINUX )
+sudo amazon-linux-extras install java-openjdk11
+cd /opt
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.9.56886.zip
+ls -l -------> sonarqube-8.9.9.56886.zip
+sudo unzip sonarqube-8.9.9.56886.zip
+ls -l -------> sonarqube-8.9.9.56886
+sudo chown -R ec2-user:ec2-user sonarqube-8.9.9.56886 (to change ownership from root to ec2-user)
+cd sonarqube-8.9.9.56886
+ls -l ------>bin
+cd bin
+ls -l -------->linux-x86-64
+cd linux-x86-64
+ls -l -------->sonar.sh
+./sonar.sh start  (to start sonarqube)
+./sonar.sh status
+default security group should have port number 9000 open.
+copy the public IP into your URL and add :9000
+
+
+
+
+
+=======RESTART SONARQUBE============
+connect to your ec2 instance where sonarqube is installed
+cd /opt
+cd sonarqube-8.9.9.56886
+cd bin
+cd linux-x86-64
+./sonar.sh start
+./sonar.sh status
